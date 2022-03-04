@@ -60,4 +60,15 @@
 #     # password: "please use keys"
 #   }
 
-set :deploy_to, "/home/maw11_9/galleries.mycpnv.ch"
+
+
+server "web23.swisscenter.com",
+    user: "maw11_9",
+    ssh_options: {
+        keys: %w("/home/cpnv/.ssh/deploy"),
+        forward_agent: false,
+        auth_methods: %w(publickey)
+    }
+
+    set :deploy_to, "/home/maw11_9/galleries.mycpnv.ch"
+

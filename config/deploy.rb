@@ -2,7 +2,8 @@
 lock "~> 3.16.0"
 
 set :application, "pictures-galleries"
-set :repo_url, "git@github.com:TGACPNV/CLD2-2022-pictures-galleries.git"
+set :repo_url, "https://github.com/TGACPNV/CLD2-2022-pictures-galleries.git"
+set :branch, 'main'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

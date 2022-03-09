@@ -64,11 +64,17 @@
 
 server "web23.swisscenter.com",
     user: "maw11_9",
+    #roles: %w{web app},
     ssh_options: {
-        keys: %w("/home/cpnv/.ssh/deploy"),
+        user: "maw11_9",
+        keys: %w("/home/cpnv/.ssh/deploy2"),
         forward_agent: false,
         auth_methods: %w(publickey)
     }
 
     set :deploy_to, "/home/maw11_9/galleries.mycpnv.ch"
+
+
+    
+    
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Picture;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -58,7 +59,10 @@ class PictureController extends Controller
     public function show(Gallery $gallery, Picture $picture,Request  $request)
     {
         if(\Str::startsWith($request->header('Accept'), 'image/')){
-            return \Storage::disk('s3')->download($picture->path);
+            $url = Storage::disk('s3')->temporaryUrl(
+                $picture->path, now()->addMinutes(1)
+            );
+            return redirect($url);
         }else if(\Str::startsWith($request->header('Accept'), 'text/')){
             return view('pictures.show', compact('picture','gallery'));
         }
